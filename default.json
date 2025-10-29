@@ -92,19 +92,28 @@
       ]
     },
     {
-      "matchDepNames": [
-        "ghcr.io/renovatebot/renovate"
-      ],
-      "pinDigests": false
-    },
-    {
       "addLabels": [
         "githubaction"
+      ],
+      "matchDepTypes": [
+        "action"
       ],
       "matchManagers": [
         "github-actions"
       ],
       "pinDigests": true
+    },
+    {
+      "addLabels": [
+        "githubaction"
+      ],
+      "matchDepTypes": [
+        "container"
+      ],
+      "matchManagers": [
+        "github-actions"
+      ],
+      "pinDigests": false
     },
     {
       "addLabels": [
