@@ -1,0 +1,84 @@
+{
+  "addLabels": [
+    "{{depName}}"
+  ],
+  "baseBranches": [
+    "main",
+    "master"
+  ],
+  "commitMessagePrefix": "chore(renovatebot):",
+  "draftPR": true,
+  "extends": [
+    "config:recommended",
+    "helpers:pinGitHubActionDigestsToSemver",
+    ":configMigration",
+    ":pinDevDependencies",
+    "customManagers:dockerfileVersions",
+    "customManagers:githubActionsVersions"
+  ],
+  "ignorePaths": [
+    "**/example/**"
+  ],
+  "labels": [
+    "dependencies"
+  ],
+  "minimumReleaseAge": "7 days",
+  "packageRules": [
+    {
+      "addLabels": [
+        "major"
+      ],
+      "matchUpdateTypes": [
+        "major"
+      ]
+    },
+    {
+      "addLabels": [
+        "minor"
+      ],
+      "matchUpdateTypes": [
+        "minor"
+      ]
+    },
+    {
+      "addLabels": [
+        "patch"
+      ],
+      "matchUpdateTypes": [
+        "patch"
+      ]
+    },
+    {
+      "addLabels": [
+        "docker"
+      ],
+      "matchManagers": [
+        "dockerfile"
+      ],
+      "pinDigests": false
+    },
+    {
+      "addLabels": [
+        "githubaction"
+      ],
+      "matchManagers": [
+        "github-actions"
+      ]
+    },
+    {
+      "addLabels": [
+        "terraform"
+      ],
+      "matchManagers": [
+        "terraform"
+      ],
+      "pinDigests": false
+    }
+  ],
+  "pinDigests": true,
+  "prConcurrentLimit": 99,
+  "rebaseWhen": "conflicted",
+  "separateMinorPatch": true,
+  "separateMultipleMajor": true,
+  "separateMultipleMinor": true
+}
