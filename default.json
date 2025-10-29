@@ -127,5 +127,6 @@
   "prConcurrentLimit": 99,
   "rebaseWhen": "conflicted",
   "separateMinorPatch": true,
-  "separateMultipleMajor": true
+  "separateMultipleMajor": true,
+  "separateMultipleMinor": true
 }
