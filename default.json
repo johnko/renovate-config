@@ -89,14 +89,7 @@
       ],
       "matchManagers": [
         "dockerfile"
-      ],
-      "pinDigests": false
-    },
-    {
-      "matchPackageNames": [
-        "ghcr.io/renovatebot/renovate"
-      ],
-      "pinDigests": false
+      ]
     },
     {
       "addLabels": [
@@ -104,7 +97,8 @@
       ],
       "matchManagers": [
         "github-actions"
-      ]
+      ],
+      "pinDigests": true
     },
     {
       "addLabels": [
@@ -112,11 +106,9 @@
       ],
       "matchManagers": [
         "terraform"
-      ],
-      "pinDigests": false
+      ]
     }
   ],
-  "pinDigests": true,
   "prConcurrentLimit": 99,
   "rebaseWhen": "conflicted",
   "separateMinorPatch": true,
