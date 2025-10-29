@@ -10,6 +10,7 @@
   "draftPR": true,
   "extends": [
     "config:recommended",
+    ":disableDependencyDashboard",
     "helpers:pinGitHubActionDigestsToSemver",
     ":configMigration",
     ":pinDevDependencies",
