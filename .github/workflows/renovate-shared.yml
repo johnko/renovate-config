@@ -28,9 +28,12 @@ jobs:
     steps:
       - name: Verify GitHub actor
         run: |
-          echo github.actor=${{ github.actor }}
-          echo github.event.actor.id=${{ github.event.actor.id }}
-          echo github.event.actor.login=${{ github.event.actor.login }}
+          echo "github.actor=${{ github.actor }}"
+          if echo "${{ github.actor }}" | grep -E '^johnko$' ; then
+            echo
+          else
+            exit 1
+          fi
       - name: Checkout
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
       # Don't waste time starting Renovate if JSON is invalid
