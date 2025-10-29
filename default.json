@@ -92,7 +92,7 @@
       ]
     },
     {
-      "matchPackageNames": [
+      "matchDepNames": [
         "ghcr.io/renovatebot/renovate"
       ],
       "pinDigests": false
