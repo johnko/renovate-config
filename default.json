@@ -93,6 +93,12 @@
       "pinDigests": false
     },
     {
+      "matchPackageNames": [
+        "ghcr.io/renovatebot/renovate"
+      ],
+      "pinDigests": false
+    },
+    {
       "addLabels": [
         "githubaction"
       ],
