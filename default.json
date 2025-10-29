@@ -92,6 +92,12 @@
       ]
     },
     {
+      "matchPackageNames": [
+        "ghcr.io/renovatebot/renovate"
+      ],
+      "pinDigests": false
+    },
+    {
       "addLabels": [
         "githubaction"
       ],
@@ -112,6 +118,5 @@
   "prConcurrentLimit": 99,
   "rebaseWhen": "conflicted",
   "separateMinorPatch": true,
-  "separateMultipleMajor": true,
-  "separateMultipleMinor": true
+  "separateMultipleMajor": true
 }
