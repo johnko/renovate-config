@@ -46,9 +46,9 @@ jobs:
           # Onboarding not needed for self hosted
           RENOVATE_ONBOARDING: "false"
           # Username for GitHub authentication (should match GitHub App name + [bot])
-          RENOVATE_USERNAME: "johnko-renovate[bot]"
+          RENOVATE_USERNAME: "selfhosted241renovatebot[bot]"
           # Git commit author used, must match GitHub App
-          RENOVATE_GIT_AUTHOR: "johnko-renovate <121964725+johnko-renovate[bot]@users.noreply.github.com>"
+          RENOVATE_GIT_AUTHOR: "selfhosted241renovatebot[bot] <241000071+selfhosted241renovatebot[bot]@users.noreply.github.com>"
           # Use GitHub API to create commits (this allows for signed commits from GitHub App)
           RENOVATE_PLATFORM_COMMIT: "enabled"
           # Override schedule if set
