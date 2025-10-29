@@ -24,7 +24,6 @@ jobs:
   call-workflow:
     uses: johnko/renovate-config/.github/workflows/renovate-shared.yml@main
     with:
-      githubActor: ${{ github.actor }}
-      logLevel: ${{ inputs.logLevel || 'info' }}
-      overrideSchedule: ${{ github.event.inputs.overrideSchedule == 'true' && '{''schedule'':null}' || '' }}
+      logLevel: ${{ inputs.logLevel }}
+      overrideSchedule: ${{ inputs.overrideSchedule == 'true' && 'true' || '' }}
     secrets: inherit

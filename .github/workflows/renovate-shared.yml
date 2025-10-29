@@ -3,10 +3,6 @@ name: Shared Workflow
 on:
   workflow_call:
     inputs:
-      githubActor:
-        description: "GitHub actor"
-        required: true
-        type: string
       logLevel:
         description: "Override default log level"
         required: false
@@ -32,8 +28,9 @@ jobs:
     steps:
       - name: Verify GitHub actor
         run: |
-          echo inputs.githubActor=${{ github.event.inputs.githubActor }}
           echo github.actor=${{ github.actor }}
+          echo github.event.actor.id=${{ github.event.actor.id }}
+          echo github.event.actor.login=${{ github.event.actor.login }}
       - name: Checkout
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
       # Don't waste time starting Renovate if JSON is invalid
@@ -60,8 +57,8 @@ jobs:
           # Use GitHub API to create commits (this allows for signed commits from GitHub App)
           RENOVATE_PLATFORM_COMMIT: "enabled"
           # Override schedule if set
-          RENOVATE_FORCE: ${{ github.event.inputs.overrideSchedule == 'true' && '{''schedule'':null}' || '' }}
-          LOG_LEVEL: ${{ github.event.inputs.logLevel || 'info' }}
+          RENOVATE_FORCE: ${{ inputs.overrideSchedule == 'true' && '{''schedule'':null}' || '' }}
+          LOG_LEVEL: ${{ inputs.logLevel }}
         with:
           configurationFile: ${{ env.CONFIG_FILE }}
           renovate-version: ${{ env.RENOVATE_VERSION }}
