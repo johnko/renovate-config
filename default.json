@@ -52,7 +52,9 @@
     "customManagers:githubActionsVersions"
   ],
   "ignorePaths": [
-    "**/example/**"
+    "**/example/**",
+    "lab/charts/*/values.yaml",
+    "lab/charts/*/values.yml"
   ],
   "labels": [
     "dependencies"
