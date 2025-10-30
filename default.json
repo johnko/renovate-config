@@ -106,7 +106,8 @@
       ],
       "matchManagers": [
         "docker-compose"
-      ]
+      ],
+      "separateMultipleMinor": true
     },
     {
       "addLabels": [
@@ -114,8 +115,7 @@
       ],
       "matchManagers": [
         "dockerfile"
-      ],
-      "separateMultipleMinor": false
+      ]
     },
     {
       "addLabels": [
@@ -124,8 +124,7 @@
       "matchManagers": [
         "github-actions"
       ],
-      "pinDigests": false,
-      "separateMultipleMinor": false
+      "pinDigests": false
     },
     {
       "addLabels": [
@@ -137,8 +136,7 @@
       "matchManagers": [
         "github-actions"
       ],
-      "pinDigests": true,
-      "separateMultipleMinor": false
+      "pinDigests": true
     },
     {
       "addLabels": [
@@ -146,14 +144,12 @@
       ],
       "matchManagers": [
         "terraform"
-      ],
-      "separateMultipleMinor": false
+      ]
     }
   ],
   "prConcurrentLimit": 99,
   "prHourlyLimit": 70,
   "rebaseWhen": "conflicted",
   "separateMinorPatch": true,
-  "separateMultipleMajor": true,
-  "separateMultipleMinor": true
+  "separateMultipleMajor": true
 }
