@@ -100,7 +100,7 @@
       ]
     },
     {
-      "allowedVersions": "/^(16\\.8\\..*|15\\.10\\..*|14\\.6\\..*|https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraPostgreSQL.Updates.LTS.html)$/",
+      "allowedVersions": "/^(16\\.8|16\\.8\\..*|15\\.10|15\\.10\\..*|14\\.6|14\\.6\\..*|https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraPostgreSQL.Updates.LTS.html)$/",
       "matchDepNames": [
         "postgres"
       ],
