@@ -53,6 +53,7 @@
   ],
   "ignorePaths": [
     "**/example/**",
+    "lab/charts/*/Chart.lock",
     "lab/charts/*/charts/*/values.yaml",
     "lab/charts/*/charts/*/values.yml",
     "lab/charts/*/values.yaml",
