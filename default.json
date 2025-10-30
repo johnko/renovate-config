@@ -106,8 +106,7 @@
       ],
       "matchManagers": [
         "docker-compose"
-      ],
-      "separateMultipleMinor": true
+      ]
     },
     {
       "addLabels": [
@@ -151,5 +150,6 @@
   "prHourlyLimit": 70,
   "rebaseWhen": "conflicted",
   "separateMinorPatch": true,
-  "separateMultipleMajor": true
+  "separateMultipleMajor": true,
+  "separateMultipleMinor": true
 }
