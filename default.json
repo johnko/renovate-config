@@ -96,6 +96,15 @@
       ]
     },
     {
+      "allowedVersions": "/^(16\\.8\\..*|15\\.10\\..*|14\\.6\\..*|https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraPostgreSQL.Updates.LTS.html)$/",
+      "matchManagers": [
+        "dockerfile"
+      ],
+      "matchPackageName": [
+        "postgres"
+      ]
+    },
+    {
       "addLabels": [
         "githubaction"
       ],
