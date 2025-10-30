@@ -123,13 +123,9 @@
       ],
       "matchManagers": [
         "github-actions"
-      ],
-      "pinDigests": false
+      ]
     },
     {
-      "addLabels": [
-        "githubaction"
-      ],
       "matchDepTypes": [
         "action"
       ],
