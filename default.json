@@ -1,6 +1,9 @@
 {
   "addLabels": [
-    "{{depName}}"
+    "depName={{depName}}",
+    "manager={{manager}}",
+    "packageName={{packageName}}",
+    "{{updateType}}"
   ],
   "baseBranchPatterns": [
     "main",
@@ -66,38 +69,6 @@
   "minimumReleaseAge": "7 days",
   "packageRules": [
     {
-      "addLabels": [
-        "major"
-      ],
-      "matchUpdateTypes": [
-        "major"
-      ]
-    },
-    {
-      "addLabels": [
-        "minor"
-      ],
-      "matchUpdateTypes": [
-        "minor"
-      ]
-    },
-    {
-      "addLabels": [
-        "patch"
-      ],
-      "matchUpdateTypes": [
-        "patch"
-      ]
-    },
-    {
-      "addLabels": [
-        "docker-compose"
-      ],
-      "matchManagers": [
-        "docker-compose"
-      ]
-    },
-    {
       "allowedVersions": "/^(16\\.8|16\\.8\\..*|15\\.10|15\\.10\\..*|14\\.6|14\\.6\\..*|https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraPostgreSQL.Updates.LTS.html)$/",
       "matchDepNames": [
         "postgres"
@@ -108,22 +79,6 @@
       "separateMultipleMinor": true
     },
     {
-      "addLabels": [
-        "docker"
-      ],
-      "matchManagers": [
-        "dockerfile"
-      ]
-    },
-    {
-      "addLabels": [
-        "githubaction"
-      ],
-      "matchManagers": [
-        "github-actions"
-      ]
-    },
-    {
       "matchDepTypes": [
         "action"
       ],
@@ -131,14 +86,6 @@
         "github-actions"
       ],
       "pinDigests": true
-    },
-    {
-      "addLabels": [
-        "terraform"
-      ],
-      "matchManagers": [
-        "terraform"
-      ]
     }
   ],
   "prConcurrentLimit": 99,
