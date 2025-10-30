@@ -44,7 +44,6 @@
   "draftPR": true,
   "extends": [
     "config:recommended",
-    ":disableDependencyDashboard",
     "helpers:pinGitHubActionDigestsToSemver",
     ":configMigration",
     ":pinDevDependencies",
@@ -147,7 +146,7 @@
     }
   ],
   "prConcurrentLimit": 99,
-  "prHourlyLimit": 50,
+  "prHourlyLimit": 60,
   "rebaseWhen": "conflicted",
   "separateMinorPatch": true,
   "separateMultipleMajor": true,
