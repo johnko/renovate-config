@@ -102,7 +102,7 @@
       "matchManagers": [
         "docker-compose"
       ],
-      "matchPackageNames": [
+      "matchDepNames": [
         "postgres"
       ],
       "separateMultipleMinor": true
