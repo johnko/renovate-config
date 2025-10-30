@@ -148,7 +148,7 @@
     }
   ],
   "prConcurrentLimit": 99,
-  "prHourlyLimit": 60,
+  "prHourlyLimit": 70,
   "rebaseWhen": "conflicted",
   "separateMinorPatch": true,
   "separateMultipleMajor": true
