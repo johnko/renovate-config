@@ -114,7 +114,8 @@
       ],
       "matchManagers": [
         "dockerfile"
-      ]
+      ],
+      "separateMultipleMinor": false
     },
     {
       "addLabels": [
@@ -123,7 +124,8 @@
       "matchManagers": [
         "github-actions"
       ],
-      "pinDigests": false
+      "pinDigests": false,
+      "separateMultipleMinor": false
     },
     {
       "addLabels": [
@@ -135,7 +137,8 @@
       "matchManagers": [
         "github-actions"
       ],
-      "pinDigests": true
+      "pinDigests": true,
+      "separateMultipleMinor": false
     },
     {
       "addLabels": [
@@ -143,7 +146,8 @@
       ],
       "matchManagers": [
         "terraform"
-      ]
+      ],
+      "separateMultipleMinor": false
     }
   ],
   "prConcurrentLimit": 99,
