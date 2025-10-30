@@ -103,7 +103,8 @@
       ],
       "matchPackageNames": [
         "postgres"
-      ]
+      ],
+      "separateMultipleMinor": true
     },
     {
       "addLabels": [
