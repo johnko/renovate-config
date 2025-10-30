@@ -15,8 +15,8 @@
       "customType": "regex",
       "description": "Update _VERSION variables in Dockerfiles",
       "managerFilePatterns": [
-        "(^|/|\\.)Dockerfile$",
-        "(^|/)Dockerfile\\.[^/]*$"
+        "/(^|/|\\.)Dockerfile$/",
+        "/(^|/)Dockerfile\\.[^/]*$/"
       ],
       "matchStrings": [
         "# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>.+?)(?: (?:packageName|lookupName)=(?<packageName>.+?))?(?: versioning=(?<versioning>[a-z-]+?))?\\s(?:ENV|ARG) .+?_VERSION=(?<currentValue>.+?)\\s"
@@ -26,7 +26,7 @@
       "customType": "regex",
       "description": "Update _VERSION variables in shell scripts",
       "managerFilePatterns": [
-        "\\.sh$"
+        "/\\.sh$/"
       ],
       "matchStrings": [
         "# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>.+?)(?: (?:packageName|lookupName)=(?<packageName>.+?))?(?: versioning=(?<versioning>[a-z-]+?))?\\s[A-Z_]+?_VERSION=(?<currentValue>.+?)\\s"
@@ -36,7 +36,7 @@
       "customType": "regex",
       "description": "Update `version:` and `_VERSION:` variables in github workflows",
       "managerFilePatterns": [
-        "^\\.github/workflows/[^/]+\\.ya?ml$"
+        "/^\\.github/workflows/[^/]+\\.ya?ml$/"
       ],
       "matchStrings": [
         "\\s+(?:[a-z]+(-|_))?version: (?<currentValue>.+?) # renovate: datasource=(?<datasource>.+?) depName=(?<depName>.+?)(?: (?:packageName|lookupName)=(?<packageName>.+?))?(?: versioning=(?<versioning>.+?))?\\s",
