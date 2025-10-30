@@ -100,7 +100,7 @@
       "matchManagers": [
         "dockerfile"
       ],
-      "matchPackageName": [
+      "matchPackageNames": [
         "postgres"
       ]
     },
