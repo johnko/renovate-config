@@ -2,34 +2,15 @@
 # unknown
 # source: https://github.com/superseb-demos/renovate-config/blob/main/.github/workflows/renovate.yml
 
-name: Shared Workflow
-
-on:
-  workflow_call:
-    inputs:
-      logLevel:
-        description: "Override default log level"
-        required: false
-        default: "info"
-        type: string
-      overrideSchedule:
-        description: "Override all schedules"
-        required: false
-        default: "false"
-        type: string
-
 concurrency:
-  group: ${{ github.repository }}-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
-
+  group: ${{ github.repository }}-${{ github.workflow }}-${{ github.ref }}
 env:
   CONFIG_FILE: .github/renovate.json
   RENOVATE_VERSION: 41.171.9 # renovate: datasource=docker depName=renovate packageName=ghcr.io/renovatebot/renovate
-
 jobs:
   renovate:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
     steps:
       - name: Verify GitHub actor
         run: |
@@ -39,41 +20,52 @@ jobs:
           else
             exit 1
           fi
-
       - name: Checkout
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
         with:
           show-progress: false
-
       # Don't waste time starting Renovate if JSON is invalid
       - name: Validate Renovate JSON
         run: jq type ${{ env.CONFIG_FILE }}
-
-      - name: Get token
+      - id: get_token
+        name: Get token
         uses: actions/create-github-app-token@67018539274d69449ef7c02e8e71183d1719ab42 # v2.1.4
-        id: get_token
         with:
           app-id: ${{ secrets.RENOVATE_APP_ID }}
-          private-key: ${{ secrets.RENOVATE_PRIVATE_KEY }}
           owner: ${{ github.repository_owner }}
-
-      - name: Self-hosted Renovate
-        uses: renovatebot/github-action@a3c115cd6676c8a5bc72f9715f108759e570daf5 # v43.0.19
-        env:
-          # Repository taken from variable to keep configuration file generic
-          RENOVATE_REPOSITORIES: ${{ github.repository }}
-          # Onboarding not needed for self hosted
-          RENOVATE_ONBOARDING: "false"
-          # Username for GitHub authentication (should match GitHub App name + [bot])
-          RENOVATE_USERNAME: "selfhosted241renovatebot[bot]"
-          # Git commit author used, must match GitHub App
-          RENOVATE_GIT_AUTHOR: "selfhosted241renovatebot[bot] <241000071+selfhosted241renovatebot[bot]@users.noreply.github.com>"
-          # Use GitHub API to create commits (this allows for signed commits from GitHub App)
-          RENOVATE_PLATFORM_COMMIT: "enabled"
+          private-key: ${{ secrets.RENOVATE_PRIVATE_KEY }}
+      - env:
+          LOG_LEVEL: ${{ inputs.logLevel }}
           # Override schedule if set
           RENOVATE_FORCE: ${{ inputs.overrideSchedule == 'true' && '{''schedule'':null}' || '' }}
-          LOG_LEVEL: ${{ inputs.logLevel }}
+          # Git commit author used, must match GitHub App
+          RENOVATE_GIT_AUTHOR: selfhosted241renovatebot[bot] <241000071+selfhosted241renovatebot[bot]@users.noreply.github.com>
+          # Onboarding not needed for self hosted
+          RENOVATE_ONBOARDING: "false"
+          # Use GitHub API to create commits (this allows for signed commits from GitHub App)
+          RENOVATE_PLATFORM_COMMIT: enabled
+          # Repository taken from variable to keep configuration file generic
+          RENOVATE_REPOSITORIES: ${{ github.repository }}
+          # Username for GitHub authentication (should match GitHub App name + [bot])
+          RENOVATE_USERNAME: selfhosted241renovatebot[bot]
+        name: Self-hosted Renovate
+        uses: renovatebot/github-action@a3c115cd6676c8a5bc72f9715f108759e570daf5 # v43.0.19
         with:
           configurationFile: ${{ env.CONFIG_FILE }}
           renovate-version: ${{ env.RENOVATE_VERSION }}
-          token: '${{ steps.get_token.outputs.token }}'
+          token: ${{ steps.get_token.outputs.token }}
+    timeout-minutes: 30
+name: Shared Workflow
+on:
+  workflow_call:
+    inputs:
+      logLevel:
+        default: info
+        description: Override default log level
+        required: false
+        type: string
+      overrideSchedule:
+        default: "false"
+        description: Override all schedules
+        required: false
+        type: string
