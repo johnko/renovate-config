@@ -1,0 +1,71 @@
+# THIS FILE'S LICENSE:
+# unknown
+# source: https://github.com/superseb-demos/renovate-config/blob/main/.github/workflows/renovate.yml
+
+concurrency:
+  cancel-in-progress: true
+  group: ${{ github.repository }}-${{ github.workflow }}-${{ github.ref }}
+env:
+  CONFIG_FILE: .github/renovate.json
+  RENOVATE_VERSION: 42.1.3 # renovate: datasource=docker depName=renovate packageName=ghcr.io/renovatebot/renovate
+jobs:
+  renovate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify GitHub actor
+        run: |
+          echo "github.actor=${{ github.actor }}"
+          if echo "${{ github.actor }}" | grep -E '^johnko$' ; then
+            echo
+          else
+            exit 1
+          fi
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          show-progress: false
+      # Don't waste time starting Renovate if JSON is invalid
+      - name: Validate Renovate JSON
+        run: jq type ${{ env.CONFIG_FILE }}
+      - id: get_token
+        name: Get token
+        uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
+        with:
+          app-id: ${{ secrets.RENOVATE_APP_ID }}
+          owner: ${{ github.repository_owner }}
+          private-key: ${{ secrets.RENOVATE_PRIVATE_KEY }}
+      - env:
+          LOG_LEVEL: ${{ inputs.logLevel }}
+          # Override schedule if set
+          RENOVATE_FORCE: ${{ inputs.overrideSchedule == 'true' && '{''schedule'':null}' || '' }}
+          # Git commit author used, must match GitHub App
+          RENOVATE_GIT_AUTHOR: selfhosted241renovatebot[bot] <241000071+selfhosted241renovatebot[bot]@users.noreply.github.com>
+          # Onboarding not needed for self hosted
+          RENOVATE_ONBOARDING: "false"
+          # Use GitHub API to create commits (this allows for signed commits from GitHub App)
+          RENOVATE_PLATFORM_COMMIT: enabled
+          # Repository taken from variable to keep configuration file generic
+          RENOVATE_REPOSITORIES: ${{ github.repository }}
+          # Username for GitHub authentication (should match GitHub App name + [bot])
+          RENOVATE_USERNAME: selfhosted241renovatebot[bot]
+        name: Self-hosted Renovate
+        uses: renovatebot/github-action@eaf12548c13069dcc28bb75c4ee4610cdbe400c5 # v44.2.6
+        with:
+          configurationFile: ${{ env.CONFIG_FILE }}
+          renovate-version: ${{ env.RENOVATE_VERSION }}
+          token: ${{ steps.get_token.outputs.token }}
+    timeout-minutes: 30
+name: Shared Workflow
+on:
+  workflow_call:
+    inputs:
+      logLevel:
+        default: info
+        description: Override default log level
+        required: false
+        type: string
+      overrideSchedule:
+        default: "false"
+        description: Override all schedules
+        required: false
+        type: string
