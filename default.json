@@ -34,9 +34,9 @@
     },
     {
       "customType": "regex",
-      "description": "Update `version:` and `_VERSION:` variables in github workflows",
+      "description": "Update `version:` and `_VERSION:` variables in all YAML files",
       "managerFilePatterns": [
-        "/^\\.github/workflows/[^/]+\\.ya?ml$/"
+        "/\\.ya?ml$/"
       ],
       "matchStrings": [
         "\\s+(?:[a-z]+(-|_))?version: (?<currentValue>.+?) # renovate: datasource=(?<datasource>.+?) depName=(?<depName>.+?)(?: (?:packageName|lookupName)=(?<packageName>.+?))?(?: versioning=(?<versioning>.+?))?\\s",
