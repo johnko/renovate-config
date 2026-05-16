@@ -49,7 +49,7 @@ jobs:
           # Username for GitHub authentication (should match GitHub App name + [bot])
           RENOVATE_USERNAME: selfhosted241renovatebot[bot]
         name: Self-hosted Renovate
-        uses: renovatebot/github-action@b67590ea780158ccd13192c22a3655a5231f869d # v46.1.8
+        uses: renovatebot/github-action@f66d8679fcfcfa051abde6e7a623007173bf5164 # v46.1.12
         with:
           configurationFile: ${{ env.CONFIG_FILE }}
           renovate-version: ${{ env.RENOVATE_VERSION }}
