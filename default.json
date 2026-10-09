@@ -34,6 +34,16 @@
     },
     {
       "customType": "regex",
+      "description": "Update _VERSION variables in .envrc files",
+      "managerFilePatterns": [
+        "/\\.envrc$/"
+      ],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>[a-z-]+?) depName=(?<depName>.+?)(?: (?:packageName|lookupName)=(?<packageName>.+?))?(?: versioning=(?<versioning>[a-z-]+?))?\\s[A-Z_]+?_VERSION=(?<currentValue>.+?)\\s"
+      ]
+    },
+    {
+      "customType": "regex",
       "description": "Update `version:` and `_VERSION:` variables in all YAML files",
       "managerFilePatterns": [
         "/\\.ya?ml$/"
