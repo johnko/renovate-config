@@ -102,7 +102,7 @@
   ],
   "prConcurrentLimit": 99,
   "prCreation": "immediate",
-  "prHourlyLimit": 2,
+  "prHourlyLimit": 4,
   "rebaseWhen": "conflicted",
   "separateMinorPatch": true,
   "separateMultipleMajor": true
